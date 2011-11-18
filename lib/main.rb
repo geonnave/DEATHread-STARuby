@@ -1,4 +1,4 @@
+require 'main_controller'
 
 
 
-puts "Hello World"
