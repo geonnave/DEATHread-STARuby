@@ -9,7 +9,16 @@ class Spaceship
 		@ctrl_panel = MainController.new
   end
 
-
+	def run
+		if running?
+			
+		else
+			turn_on
+			return false if !running?
+			run
+		end
+		false
+	end
 
 	def turn_on
 		@running = true if @damage <= 99 && @energy >= 1 && !running?
