@@ -1,5 +1,16 @@
 require 'spaceship'
+require 'spaceship_modules/on_board_computer'
+require 'spaceship_accessories/spaceship_sensors'
 
+sensors = SpaceshipSensors.new
+pc = OnBoardComputer.new(sensors)
+pc.activate
+ time = Time.now
+puts time.to_f
+#pc.notify_sensors
+
+
+puts pc.alert_messsage
 
 death_star = Spaceship.new
 

@@ -11,8 +11,11 @@ class MainController
   def initialize
 		@fuel = Fuel.new
 		@danger_sensor = DangerSensor.new
+		@force = ForceField.new
   end
 
-	
+	def exec
+		
+	end
 
 end
