@@ -1,18 +1,17 @@
-require 'spaceship'
+
 require 'spaceship_modules/on_board_computer'
 require 'spaceship_accessories/spaceship_sensors'
+require 'spaceship_accessories/control_panel'
 class Main
 
+
+  mc = ControlPanel.new
+  mc.add_panel(OnBoardComputer.new)
+  mc.turn_on
  
-  #pc.notify_sensors
 
-  i=0
-  while true
-    sensors = SpaceshipSensors.new()
-    pc = OnBoardComputer.new(sensors){}
-    pc.run
-  
-    puts pc.alert_message
+  mc.resource_monitor
 
-  end
+
+
 end

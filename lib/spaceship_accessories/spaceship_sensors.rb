@@ -1,8 +1,7 @@
 
 
 class SpaceshipSensors
-
-
+  attr_reader :energy, :fuel, :damages
 	CRITICAL_ENERGY_VALUE = 200
 	CRITICAL_FUEL_VALUE = 200
 	CRITICAL_DAMAGE_VALUE = 900
@@ -31,4 +30,8 @@ class SpaceshipSensors
 		return @damages <= CRITICAL_DAMAGE_VALUE
 	end
 
+  def to_s
+    "energy: #{@energy}\nfuel: #{@fuel}\ndamages: #{@damages}\n"
+  end
+  
 end
