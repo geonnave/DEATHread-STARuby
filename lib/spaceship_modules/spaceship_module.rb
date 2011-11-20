@@ -2,8 +2,8 @@ require 'spaceship_accessories/spaceship_sensors'
 
 class SpaceShipModule < Thread
 	
-	
-  def initialize(sensors, energy_spent=0, fuel_spent=0, damages_spent=0)
+  def initialize(sensors, energy_spent=0, fuel_spent=0, damages_spent=0,&block)
+    super
 		@spaceship_sensors = sensors
 		set_spent_or_recovery_values(energy_spent, fuel_spent, damages_spent)
 		desactivate
@@ -14,12 +14,16 @@ class SpaceShipModule < Thread
 		@fuel_spent = fuel_spent
 		@damage_spent = damage_spent
 	end
-def run
-notify_sensors	if module_is_active?
-end
+  
+  def run
+    while true
+      notify_sensors if module_is_active?
+      sleep(1)
+    end
+  end
 
 	def activate
-		@active = true
+    @active = true
 	end
 
 	def module_is_active?

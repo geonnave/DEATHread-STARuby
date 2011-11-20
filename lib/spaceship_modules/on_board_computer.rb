@@ -1,8 +1,9 @@
 require 'spaceship_modules/spaceship_module'
 
-class OnBoardComputer < SpaceShipModule
+class OnBoardComputer < SpaceShipModule 
 
-  def initialize sensors, energy_spent=-1, fuel_spent=0, damages_spent=0
+
+  def initialize sensors, energy_spent=-900, fuel_spent=0, damages_spent=0
 		super(sensors,energy_spent,fuel_spent,damages_spent)
   end
 
