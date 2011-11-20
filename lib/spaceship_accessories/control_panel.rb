@@ -4,9 +4,9 @@ class ControlPanel
   attr_accessor :sensors
   attr_accessor :panels
   
-  def initialize
+  def initialize sensors
     @panels = Array.new
-		@sensors = SpaceshipSensors.new
+		@sensors = sensors
     @semaphore = Mutex.new
     @threads = Array.new
   end
@@ -24,14 +24,6 @@ Add a panel item. Panel item represents a Spaceship module.
     @panels.each{|panel_item| panel_item.activate}    
   end
   
-  def resource_monitor
-    while true
-      puts @sensors
-      puts @panels[0].alert_message
-      sleep(1) #update monitor every 1 second
-    end
-  end
-  
   
 =begin
 Create a Thread. 
@@ -42,7 +34,7 @@ The amount_of_spending default is 1 (chance monitor values every 1 second).
 if amount of spending is smaller(ex: 0.1) sensor values ​​will change more rapidly
 =end
   def create_panel_thread panel_item, amount_of_spending=1
-    Thread.new{Thread.current.join(0)
+    Thread.new{Thread.current.join(1) #join: share the cpu time. 0 is the priority(can be changed, if nescessary)
       while true
         @semaphore.synchronize {@sensors
           panel_item.notify_sensors}

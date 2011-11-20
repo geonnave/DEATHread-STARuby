@@ -1,17 +1,9 @@
 
-require 'spaceship_modules/on_board_computer'
-require 'spaceship_accessories/spaceship_sensors'
-require 'spaceship_accessories/control_panel'
+require 'spaceships/death_star'
 class Main
 
-
-  mc = ControlPanel.new
-  mc.add_panel(OnBoardComputer.new)
-  mc.turn_on
- 
-
-  mc.resource_monitor
-
-
+spaceship = DeathStar.new
+spaceship.turn_on
+spaceship.resource_monitor
 
 end

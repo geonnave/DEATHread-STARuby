@@ -1,7 +1,7 @@
 require 'spaceship_accessories/spaceship_sensors'
 
 
-class SpaceShipModule
+class SpaceshipModule
 	attr_writer :sensors
   
   def initialize(energy_spent=0, fuel_spent=0, damages_spent=0)

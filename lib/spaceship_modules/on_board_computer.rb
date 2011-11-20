@@ -1,7 +1,7 @@
 require 'spaceship_modules/spaceship_module'
 
-class OnBoardComputer < SpaceShipModule 
-  def initialize  energy_spent=-10, fuel_spent=0, damages_spent=0
+class OnBoardComputer < SpaceshipModule 
+  def initialize  energy_spent=-5, fuel_spent=0, damages_spent=0
 		super(energy_spent,fuel_spent,damages_spent)
   end
 
