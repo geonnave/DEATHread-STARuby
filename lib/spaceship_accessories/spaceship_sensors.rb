@@ -1,16 +1,15 @@
 
 
 class SpaceshipSensors
-
-
+  attr_accessor :energy, :fuel, :damages
 	CRITICAL_ENERGY_VALUE = 200
 	CRITICAL_FUEL_VALUE = 200
-	CRITICAL_DAMAGE_VALUE = 900
+	CRITICAL_DAMAGE_VALUE = 9000
 	
-	def initialize energy=2000, fuel=2000, damages=9000
+	def initialize energy=2000, fuel=2000
 		@energy = energy
 		@fuel = fuel
-		@damages = damages
+		@damages = 0
 	end
 
 	def notify energy=0, fuel=0, damages=0
@@ -28,7 +27,11 @@ class SpaceshipSensors
 	end
   
 	def critical_damage?
-		return @damages <= CRITICAL_DAMAGE_VALUE
+		return @damages >= CRITICAL_DAMAGE_VALUE
 	end
 
+  def to_s
+    "energy: #{@energy}\nfuel: #{@fuel}\ndamages: #{@damages}\n"
+  end
+  
 end
