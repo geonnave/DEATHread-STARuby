@@ -11,7 +11,7 @@ require 'spaceship_modules/radar'
 class Spaceship
   attr_accessor :sensors, :control_panel, :event_generator
   
-  def initialize captain="Darth Vader",energy=10000,fuel=10000,damage=90000,atack=1,defense=2
+  def initialize captain="Darth Vader",energy=10000,fuel=10000,atack=1,defense=2
       
     @ENERGY =energy
     @FUEL = fuel
@@ -26,10 +26,10 @@ class Spaceship
   end
   
   def construct_spaceship
-    @control_panel.add_panel(OnBoardComputer.new)
-    @control_panel.add_panel(Radar.new(@event_generator))
-    @control_panel.add_panel(AtackModule.new)
-    @control_panel.add_panel(DefenseModule.new)
+    construct_module(OnBoardComputer.new)
+    construct_module(Radar.new(@event_generator))
+    construct_module(AtackModule.new)
+    construct_module(DefenseModule.new)
   end
   
   def desactive_module index
@@ -90,5 +90,10 @@ class Spaceship
   def atack? atack_module_index=2
     return @ATACK if @control_panel.panels[atack_module_index].module_is_active?
     return 0
+  end
+  
+  private
+  def construct_module spaceship_module
+    @control_panel.add_panel(spaceship_module)
   end
 end

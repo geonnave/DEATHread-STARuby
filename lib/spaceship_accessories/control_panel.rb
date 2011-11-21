@@ -24,7 +24,7 @@ Add a panel item. Panel item represents a Spaceship module.
     @panels.each{|panel_item| panel_item.activate}    
   end
   
-  
+private 
 =begin
 Create a Thread. 
 Each thread represents a panel item.
@@ -34,7 +34,7 @@ The amount_of_spending default is 1 (chance monitor values every 1 second).
 if amount of spending is smaller(ex: 0.1) sensor values ​​will change more rapidly
 =end
   def create_panel_thread panel_item, amount_of_spending=1
-    Thread.new{Thread.current.join(1) #join: share the cpu time. 0 is the priority(can be changed, if nescessary)
+    Thread.new{Thread.current.join(1) #join: share the cpu time. 1 is the priority(can be changed, if nescessary)
       while true
         @semaphore.synchronize {@sensors
           panel_item.notify_sensors}

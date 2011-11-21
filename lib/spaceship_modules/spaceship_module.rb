@@ -9,12 +9,6 @@ class SpaceshipModule
 		desactivate
   end
 
-	def set_spent_or_recovery_values energy_spent=0, fuel_spent=0, damage_spent=0
-		@energy_spent = energy_spent
-		@fuel_spent = fuel_spent
-		@damage_spent = damage_spent
-	end 
-
 	def activate
     @active = true
 	end
@@ -30,5 +24,11 @@ class SpaceshipModule
 	def notify_sensors
 		@sensors.notify(@energy_spent,@fuel_spent,@damage_spent) if module_is_active?
 	end
-
+  
+  private
+	def set_spent_or_recovery_values energy_spent=0, fuel_spent=0, damage_spent=0
+		@energy_spent = energy_spent
+		@fuel_spent = fuel_spent
+		@damage_spent = damage_spent
+	end 
 end
