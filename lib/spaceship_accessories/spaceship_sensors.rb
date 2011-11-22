@@ -38,6 +38,10 @@ class SpaceshipSensors
 		@fuel <= 10
 	end
 
+	def critical_status?
+		critical_damage? || critical_energy || critical_fuel?
+	end
+
   def to_s
     "energy: #{@energy}\nfuel: #{@fuel}\ndamages: #{@damages}\n"
   end

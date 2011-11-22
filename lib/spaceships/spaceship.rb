@@ -8,7 +8,7 @@ require './spaceship_modules/radar'
 require './spaceship_accessories/control_panel'
 
 class Spaceship
-  attr_accessor :sensors, :control_panel, :event_generator
+  attr_accessor :sensors, :control_panel, :event_generator, :captain
 
   def initialize captain="Darth Vader",energy=10000,fuel=10000,atack=1,defense=2
     @ENERGY =energy
@@ -35,10 +35,19 @@ class Spaceship
       puts @sensors
       puts @control_panel.panels[computer_index].alert_message
       puts @control_panel.panels[radar_index].monitor
-			turn_off if @sensors.critical_damage? || @sensors.critical_energy? || @sensors.critical_fuel?
+			turn_off if @sensors.critical_status?
       sleep($UPDATE_TIME) 
     end
   end
+
+	def run
+		turn_on
+		if active?
+			log = []
+			
+		end
+		log
+	end
   
   def desactive_module index
     @control_panel[index].desactivate
@@ -49,8 +58,12 @@ class Spaceship
   end
   
   def turn_on
-    @control_panel.turn_on
-		@active = true
+		if !@sensors.critical_status? || !active?
+			@control_panel.turn_on
+			@active = true
+		else
+			false
+		end
   end
 
 	def turn_off
@@ -97,6 +110,10 @@ class Spaceship
   end
 	def active?
 		@active
+	end
+
+	def to_s
+		"Spaceship captain: #{@captain}"
 	end
   
   private

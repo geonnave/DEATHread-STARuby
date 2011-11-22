@@ -1,5 +1,5 @@
 
-require './spaceships/death_star.rb'
+require './spaceships/death_star'
 
 
 class Main
