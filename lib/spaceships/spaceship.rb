@@ -1,18 +1,16 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-require 'others/event_generator'
-require 'spaceship_accessories/spaceship_sensors'
-require 'spaceship_accessories/control_panel'
-require 'spaceship_modules/atack_module'
-require 'spaceship_modules/defense_module'
-require 'spaceship_modules/on_board_computer'
-require 'spaceship_modules/radar'
+require './others/event_generator'
+require './spaceship_accessories/spaceship_sensors'
+require './spaceship_accessories/control_panel'
+require './spaceship_modules/atack_module'
+require './spaceship_modules/defense_module'
+require './spaceship_modules/on_board_computer'
+require './spaceship_modules/radar'
+require './spaceship_accessories/control_panel'
 
 class Spaceship
   attr_accessor :sensors, :control_panel, :event_generator
-  
+
   def initialize captain="Darth Vader",energy=10000,fuel=10000,atack=1,defense=2
-      
     @ENERGY =energy
     @FUEL = fuel
     @ATACK = atack
@@ -22,14 +20,24 @@ class Spaceship
     @sensors = SpaceshipSensors.new(@ENERGY,@FUEL)
     @control_panel = ControlPanel.new(@sensors)
     @event_generator = EventGenerator.new
-    construct_spaceship
-  end
-  
-  def construct_spaceship
+
+		@active = false
+		
     construct_module(OnBoardComputer.new)
     construct_module(Radar.new(@event_generator))
     construct_module(AtackModule.new)
     construct_module(DefenseModule.new)
+  end
+
+  def resource_monitor computer_index=0,radar_index=1
+    while active?
+      puts modules_in_spaceship
+      puts @sensors
+      puts @control_panel.panels[computer_index].alert_message
+      puts @control_panel.panels[radar_index].monitor
+			turn_off if @sensors.critical_damage? || @sensors.critical_energy? || @sensors.critical_fuel?
+      sleep($UPDATE_TIME) 
+    end
   end
   
   def desactive_module index
@@ -42,7 +50,13 @@ class Spaceship
   
   def turn_on
     @control_panel.turn_on
+		@active = true
   end
+
+	def turn_off
+    @control_panel.turn_off
+		@active = false
+	end
   
   def modules_in_spaceship
     modules_monitor = "#{self.class} modules:\n"
@@ -52,16 +66,6 @@ class Spaceship
       i+=1
     }
     return modules_monitor
-  end
-  
-  def resource_monitor computer_index=0,radar_index=1
-    while true
-      puts modules_in_spaceship
-      puts @sensors
-      puts @control_panel.panels[computer_index].alert_message
-      puts @control_panel.panels[radar_index].monitor
-      sleep(1) #update monitor every 1 second
-    end
   end
   
   def combat disaster_index=0,defense_module_index=3, atack_module_index=2
@@ -91,6 +95,9 @@ class Spaceship
     return @ATACK if @control_panel.panels[atack_module_index].module_is_active?
     return 0
   end
+	def active?
+		@active
+	end
   
   private
   def construct_module spaceship_module

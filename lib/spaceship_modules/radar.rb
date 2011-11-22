@@ -1,7 +1,5 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-require 'spaceship_modules/spaceship_module'
-require 'others/event_generator'
+require './spaceship_modules/spaceship_module'
+require './others/event_generator'
 
 class Radar < SpaceshipModule 
   def initialize event_generator, energy_spent=-5, fuel_spent=-5, damages_spent=0

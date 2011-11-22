@@ -2,8 +2,8 @@
 
 class SpaceshipSensors
   attr_accessor :energy, :fuel, :damages
-	CRITICAL_ENERGY_VALUE = 200
-	CRITICAL_FUEL_VALUE = 200
+	CRITICAL_ENERGY_VALUE = 500
+	CRITICAL_FUEL_VALUE = 500
 	CRITICAL_DAMAGE_VALUE = 9000
 	
 	def initialize energy=2000, fuel=2000
@@ -18,16 +18,24 @@ class SpaceshipSensors
 		@damages += damages
 	end
   
-	def critical_energy?
-		return @energy <= CRITICAL_ENERGY_VALUE
+	def semi_critical_energy?
+		@energy <= CRITICAL_ENERGY_VALUE
 	end
   
-	def critical_fuel?
-		return @fuel <= CRITICAL_FUEL_VALUE
+	def semi_critical_fuel?
+		@fuel <= CRITICAL_FUEL_VALUE
 	end
   
 	def critical_damage?
-		return @damages >= CRITICAL_DAMAGE_VALUE
+		@damages >= CRITICAL_DAMAGE_VALUE
+	end
+
+	def critical_energy?
+		@energy <= 10
+	end
+
+	def critical_fuel?
+		@fuel <= 10
 	end
 
   def to_s

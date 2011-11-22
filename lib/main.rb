@@ -1,5 +1,7 @@
 
-require 'spaceships/death_star'
+require './spaceships/death_star.rb'
+
+
 class Main
 
 spaceship = DeathStar.new
