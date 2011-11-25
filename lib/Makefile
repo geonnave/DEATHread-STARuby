@@ -1,4 +1,4 @@
-# é necessário compilar com o ruby 1.9.2
+# make sure that you are using 1.9.2
 
 run:
 	ruby main.rb
