@@ -31,6 +31,7 @@ class Spaceship
 
   def resource_monitor computer_index=0,radar_index=1
     while active?
+			system('clear')
       puts modules_in_spaceship
       puts @sensors
       puts @control_panel.panels[computer_index].alert_message
@@ -40,15 +41,6 @@ class Spaceship
     end
   end
 
-	def run
-		log = nil
-		if active?
-			log = []
-			modules_in_spaceship
-			log << @sensors.pct_sensors
-		end
-		log.nil? ? nil : log
-	end
   
   def desactive_module index
     @control_panel[index].desactivate

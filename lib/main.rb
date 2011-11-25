@@ -6,7 +6,6 @@ class Main
 
 spaceship = DeathStar.new
 spaceship.turn_on
-spaceship.run
-#spaceship.resource_monitor
+spaceship.resource_monitor
 
 end

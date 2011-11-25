@@ -41,7 +41,7 @@ Shoes.app :width => 512, :height => 512, :title => 'DEATHread STARuby' do
 		end
 	end
 
-	def run
+	def run							#método ainda em desenvolvimento, primeiras tentativas..
 		5.times do
 			log = @death_star.run
 			unless log.nil?
