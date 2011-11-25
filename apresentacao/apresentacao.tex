@@ -1,0 +1,81 @@
+\documentclass[11pt,compress,xcolor=table]{beamer}
+
+\usepackage[portuges]{babel}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{verbatim}
+\usepackage{bold-extra}
+
+% pacote para colorir tabelas
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage[table]{xcolor}
+
+%Colorir arquivos com códigos fontes fontes
+\usepackage{minted}
+%caixas de textos
+%\usepackage{fancybox}
+
+%===== Pacotes para colorir links =====
+\usepackage{fancyhdr}
+%\usepackage[colorlinks,linkcolor=blue,hyperindex]{hyperref}
+%\hypersetup{backref,  pdfpagemode=FullScreen, colorlinks=true,linkcolor=blue}
+
+%===== Pacotes para mostrar códigos fontes =====
+\usepackage{listings}
+% simpsons
+%\usepackage{simpsons}
+
+% Caminhos das Imagens
+\graphicspath{{images/}}
+
+% definição de comandos
+  \newcommand{\degree}{\ensuremath{^\circ}}
+\makeatletter
+  \newcommand\tinyv{\@setfontsize\tinyv{6pt}{6pt}}
+\makeatother
+
+%===== Configurações para mostrar Códigos Fonte ===== %
+\lstset{numbers=left,
+  language=python,
+  stepnumber=1,
+  firstnumber=1,
+  numberstyle=\tiny,
+  extendedchars=false,
+  escapeinside='',
+  breaklines=true,
+  frame=tb,
+  basicstyle=\tiny,
+  stringstyle=\ttfamily,
+  showstringspaces=false
+  backgroundcolor=\icolor{gray}
+  morecomment=[l]{//} % displays comments in italics (language dependent)
+}
+
+% Tema da Apresentação
+\usetheme{Ilmenau}
+\setbeamercovered{transparent}
+\setbeamertemplate{footline}[frame number]
+
+
+% Informações sobre a apresentação
+\author{Geovane, Henrique}
+\title[Título menor]{DEATHread STARuby}
+\subtitle[Título menor]{Título maior}
+\institute[abriviação]{completa}
+\date[abriviada]{completa}
+
+\begin{document}
+
+\input{slides/01-cap}
+\input{slides/02-outline}
+\input{slides/03-intro}
+%\input{slides/99-references}
+
+\end{document}
+
+

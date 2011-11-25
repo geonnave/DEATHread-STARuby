@@ -41,12 +41,13 @@ class Spaceship
   end
 
 	def run
-		turn_on
+		log = nil
 		if active?
 			log = []
-			
+			modules_in_spaceship
+			log << @sensors.pct_sensors
 		end
-		log
+		log.nil? ? nil : log
 	end
   
   def desactive_module index
@@ -69,6 +70,10 @@ class Spaceship
 	def turn_off
     @control_panel.turn_off
 		@active = false
+	end
+
+	def switch
+		active? ? turn_off : turn_on
 	end
   
   def modules_in_spaceship
